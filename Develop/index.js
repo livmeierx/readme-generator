@@ -70,8 +70,13 @@ function promtpUser () {
     ]);
 }
 
-// TODO: Create a function to initialize app
-function init() {}
+// Async function to initialize app using util.promisify
+function init() {
+    try {
+        const answers = await promtpUser();
+        const generateReadme = generateMarkdown(answers);
+    }
+}
 
 // Function call to initialize app
 init();
