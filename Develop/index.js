@@ -70,11 +70,13 @@ function promtpUser () {
     ]);
 }
 
-// Async function to initialize app using util.promisify
+// Async function to initialize app using util.promisify and prompt user questions
 function init() {
     try {
         const answers = await promtpUser();
         const generateReadme = generateMarkdown(answers);
+        await writeToFile('./dist/README.md', generateReadme);
+        console.log('README successfully created.');
     }
 }
 
