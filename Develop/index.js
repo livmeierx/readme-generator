@@ -12,21 +12,53 @@ function promtpUser () {
             type: "input",
             name1: "projectTitle",
             message: "Type in your project title:",
+            validate: name1Input => {
+                if (name1Input) {
+                    return true;
+                } else {
+                    console.log("Please enter your project title.");
+                    return false;
+                }
+            }
         },
         {
             type: "input",
             name1: "description",
             message: "Write a brief description:", 
+            validate: name1Input => {
+                if (name1Input) {
+                    return true;
+                } else {
+                    console.log("Please enter a description.");
+                    return false;
+                }
+            }
         },
         {
             type: "input",
             name1: "installation",
             message: "Describe the installation process:",
+            validate: name1Input => {
+                if (name1Input) {
+                    return true;
+                } else {
+                    console.log("Please enter steps required to install.");
+                    return false;
+                }
+            }
         },
         {
             type: "input",
             name1: "usage",
-            message: "What is the project used for?:",
+            message: "How do you use this application?:",
+            validate: name1Input => {
+                if (name1Input) {
+                    return true;
+                } else {
+                    console.log("Please enter a usage description.");
+                    return false;
+                }
+            }
         },
         {
             type: "list",
@@ -40,12 +72,28 @@ function promtpUser () {
                 "MIT",
                 "Mozilla",
                 "Open"
-            ]
+            ],
+            validate: name1Input => {
+                if (name1Input) {
+                    return true;
+                } else {
+                    console.log("Please enter a license.");
+                    return false;
+                }
+            }
         },
         {
             type: "input",
             name1: "contriuting",
             message: "List the contributors:",
+            validate: name1Input => {
+                if (name1Input) {
+                    return true;
+                } else {
+                    console.log("Please enter contributors.");
+                    return false;
+                }
+            }
         },
         {
             type: "input",
@@ -61,11 +109,27 @@ function promtpUser () {
             type: "input",
             name1: "username",
             message: "Enter your GitHub username:",
+            validate: name1Input => {
+                if (name1Input) {
+                    return true;
+                } else {
+                    console.log("Please enter your GitHub name.");
+                    return false;
+                }
+            }
         },
         {
             type: "input",
             name1: "email",
             message: "Enter your email:",
+            validate: name1Input => {
+                if (name1Input) {
+                    return true;
+                } else {
+                    console.log("Please enter your email.");
+                    return false;
+                }
+            }
         },
     ]);
 }
@@ -77,6 +141,8 @@ function init() {
         const generateReadme = generateMarkdown(answers);
         await writeToFile('./dist/README.md', generateReadme);
         console.log('README successfully created.');
+    } catch(err) {
+        console.log(err);
     }
 }
 
