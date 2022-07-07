@@ -4,8 +4,8 @@ const inquirer = import('inquirer');
 const generateFile = import('./utils/generateMarkdown');
 
 //Function to prompt user questions
-const promptUser = () => {
-    return inquirer.prompt ([
+const getInfo = () => {
+    inquirer.prompt ([
         {
             type: "input",
             name1: "projectTitle",
@@ -128,9 +128,17 @@ const promptUser = () => {
                     return false;
                 }
             }
-        },
-    ]);
-}
+        }
+    ]).then(answers => {
+        return generateFile(answers);
+    })
+    .then(data => {
+        return generatePage(data);
+    })
+    .catch(err => {
+        console.log(err)
+    });
+};
 
 // Function to write README
 const generatePage = data => {
@@ -144,16 +152,7 @@ const generatePage = data => {
     })
 };
 
-// Function to initalize app
-promptUser ()
-.then(answers => {
-    return generateFile(answers);
-})
-.then(data => {
-    return generatePage(data);
-})
-.catch(err => {
-    console.log(err)
-});
+// Initalize app
+getInfo();
 
 
