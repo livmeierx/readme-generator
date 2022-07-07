@@ -1,7 +1,7 @@
 //Creation of a single function to populate README
 const generateMarkdown = data => {
   return `
-  <h1 align="center">${data.projectTitle}</h1>
+  <h1>${data.projectTitle}</h1>
 
   ## Description
   ${data.description}

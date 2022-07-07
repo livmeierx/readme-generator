@@ -1,7 +1,7 @@
 // Packages needed for this application and declaring variables
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generateFile = require('./utils/generateMarkdown');
+const generatePage = require('./utils/generateMarkdown');
 
 //Function to prompt user questions
 const getInfo = () => {
@@ -60,7 +60,7 @@ const getInfo = () => {
         },
         {
             type: "list",
-            name: "licesne",
+            name: "license",
             message: "Choose the correct license:",
             choices: [
                 "Apache",
@@ -130,10 +130,10 @@ const getInfo = () => {
             }
         }
     ]).then(answers => {
-        return generateFile(answers);
+        return generatePage(answers);
     })
     .then(data => {
-        return generatePage(data);
+        return writeFile(data);
     })
     .catch(err => {
         console.log(err)
@@ -141,8 +141,8 @@ const getInfo = () => {
 };
 
 // Function to write README
-const generatePage = data => {
-    fs.generatePage('./dist/README.md', data, err => {
+const writeFile = data => {
+    fs.writeFile('./dist/README.md', data, err => {
         if (err) {
             console.log(err);
             return;
