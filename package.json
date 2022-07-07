@@ -1,7 +1,7 @@
 {
   "name": "readme-generator",
   "version": "1.0.0",
-  "description": "a node application that creates a professional readme based on user input criteria",
+  "description": "Node application that creates a README based on user input",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/livmeierx/readme-generator#readme",
   "dependencies": {
-    "inquirer": "9.0.0"
+    "inquirer": "^6.5.2"
   }
 }

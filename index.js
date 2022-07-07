@@ -1,17 +1,17 @@
 // Packages needed for this application and declaring variables
-const fs = import('fs');
-const inquirer = import('inquirer');
-const generateFile = import('./utils/generateMarkdown');
+const fs = require('fs');
+const inquirer = require('inquirer');
+const generateFile = require('./utils/generateMarkdown');
 
 //Function to prompt user questions
 const getInfo = () => {
     inquirer.prompt ([
         {
             type: "input",
-            name1: "projectTitle",
+            name: "projectTitle",
             message: "Type in your project title:",
-            validate: name1Input => {
-                if (name1Input) {
+            validate: nameInput => {
+                if (nameInput) {
                     return true;
                 } else {
                     console.log("Please enter your project title.");
@@ -21,10 +21,10 @@ const getInfo = () => {
         },
         {
             type: "input",
-            name1: "description",
+            name: "description",
             message: "Write a brief description:", 
-            validate: name1Input => {
-                if (name1Input) {
+            validate: nameInput => {
+                if (nameInput) {
                     return true;
                 } else {
                     console.log("Please enter a description.");
@@ -34,10 +34,10 @@ const getInfo = () => {
         },
         {
             type: "input",
-            name1: "installation",
+            name: "installation",
             message: "Describe the installation process:",
-            validate: name1Input => {
-                if (name1Input) {
+            validate: nameInput => {
+                if (nameInput) {
                     return true;
                 } else {
                     console.log("Please enter steps required to install.");
@@ -47,10 +47,10 @@ const getInfo = () => {
         },
         {
             type: "input",
-            name1: "usage",
+            name: "usage",
             message: "How do you use this application?:",
-            validate: name1Input => {
-                if (name1Input) {
+            validate: nameInput => {
+                if (nameInput) {
                     return true;
                 } else {
                     console.log("Please enter a usage description.");
@@ -60,7 +60,7 @@ const getInfo = () => {
         },
         {
             type: "list",
-            name1: "licesne",
+            name: "licesne",
             message: "Choose the correct license:",
             choices: [
                 "Apache",
@@ -71,8 +71,8 @@ const getInfo = () => {
                 "Mozilla",
                 "Open"
             ],
-            validate: name1Input => {
-                if (name1Input) {
+            validate: nameInput => {
+                if (nameInput) {
                     return true;
                 } else {
                     console.log("Please enter a license.");
@@ -82,10 +82,10 @@ const getInfo = () => {
         },
         {
             type: "input",
-            name1: "contriuting",
+            name: "contriuting",
             message: "List the contributors:",
-            validate: name1Input => {
-                if (name1Input) {
+            validate: nameInput => {
+                if (nameInput) {
                     return true;
                 } else {
                     console.log("Please enter contributors.");
@@ -95,20 +95,20 @@ const getInfo = () => {
         },
         {
             type: "input",
-            name1: "tests",
+            name: "tests",
             message: "Is there a test included?:",
         },
         {
             type: "input",
-            name1: "questions",
+            name: "questions",
             message: "What to do if there's an issue?:",
         },
         {
             type: "input",
-            name1: "username",
+            name: "username",
             message: "Enter your GitHub username:",
-            validate: name1Input => {
-                if (name1Input) {
+            validate: nameInput => {
+                if (nameInput) {
                     return true;
                 } else {
                     console.log("Please enter your GitHub name.");
@@ -118,10 +118,10 @@ const getInfo = () => {
         },
         {
             type: "input",
-            name1: "email",
+            name: "email",
             message: "Enter your email:",
-            validate: name1Input => {
-                if (name1Input) {
+            validate: nameInput => {
+                if (nameInput) {
                     return true;
                 } else {
                     console.log("Please enter your email.");
@@ -154,5 +154,3 @@ const generatePage = data => {
 
 // Initalize app
 getInfo();
-
-
