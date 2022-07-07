@@ -133,7 +133,7 @@ const getInfo = () => {
         return generatePage(answers);
     })
     .then(data => {
-        return writeFile(data);
+        return getFile(data);
     })
     .catch(err => {
         console.log(err)
@@ -141,8 +141,8 @@ const getInfo = () => {
 };
 
 // Function to write README
-const writeFile = data => {
-    fs.writeFile('./dist/README.md', data, err => {
+const getFile = data => {
+    fs.getFile('./dist/README.md', data, err => {
         if (err) {
             console.log(err);
             return;
