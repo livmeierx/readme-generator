@@ -2,7 +2,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const util = require('util');
-const generateMarkdown = require('./utils/generateMarkdown');
+const generateMarkdown = require('./utils/generateMarkdown').default;
 const writeToFile = util.promisify(fs.writeFile);
 
 //Function to prompt user questions
@@ -135,7 +135,7 @@ function promtpUser () {
 }
 
 // Async function to initialize app using util.promisify and prompt user questions
-function init() {
+async function init() {
     try {
         const answers = await promtpUser();
         const generateReadme = generateMarkdown(answers);
