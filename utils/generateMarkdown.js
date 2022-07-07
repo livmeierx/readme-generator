@@ -10,7 +10,7 @@ const generateMarkdown = data => {
   * [Installation](#installation)
   * [Usage](#usage)
   * [License](#license)
-  * [Contributing](#contributing)
+  * [Contributers](#contributers)
   * [Tests](#tests)
   * [Questions](#questions)
 
@@ -23,8 +23,8 @@ const generateMarkdown = data => {
   ## License
   This applications is coverd by the ${data.license} license.
 
-  ## Contributing
-  ${data.contributing}
+  ## Contributers
+  ${data.contributers}
 
   ## Tests
   ${data.tests}
