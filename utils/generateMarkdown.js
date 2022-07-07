@@ -1,5 +1,5 @@
 //Creation of a single function to populate README
-function generateMarkdown(answers) {
+const generateMarkdown = data => {
   return `
   <h1 align="center">${answers.projectTitle}</h1>
 
@@ -28,4 +28,5 @@ function generateMarkdown(answers) {
   `;
 }
 
+// Importing markdown index
 module.exports = generateMarkdown;

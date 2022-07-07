@@ -1,13 +1,10 @@
 // Packages needed for this application and declaring variables
 const fs = import('fs');
 const inquirer = import('inquirer');
-const util = import('util');
-const promisify = import('util.promisfy');
-const generateMarkdown = import('./Develop/utils/generateMarkdown').default;
-const writeToFile = util.promisify(fs.writeFile);
+const generateFile = import('./utils/generateMarkdown');
 
 //Function to prompt user questions
-function promtpUser () {
+const promptUser = () => {
     return inquirer.prompt ([
         {
             type: "input",
@@ -135,17 +132,28 @@ function promtpUser () {
     ]);
 }
 
-// Async function to initialize app using util.promisify and prompt user questions
-async function init() {
-    try {
-        const answers = await promtpUser();
-        const generateReadme = generateMarkdown(answers);
-        await writeToFile('./dist/README.md', generateReadme);
-        console.log('README successfully created.');
-    } catch(err) {
-        console.log(err);
-    }
-}
+// Function to write README
+const generatePage = data => {
+    fs.generatePage('./dist/README.md', data, err => {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log("Your README has been created.")
+        }
+    })
+};
 
-// Function call to initialize app
-init();
+// Function to initalize app
+promptUser ()
+.then(answers => {
+    return generateFile(answers);
+})
+.then(data => {
+    return generatePage(data);
+})
+.catch(err => {
+    console.log(err)
+});
+
+
